@@ -8,7 +8,13 @@
   </head>
   <body>
     <div class="carousel">
-      <button class="carousel__button"></button>
+      <button class="carousel__button carousel__button--left">
+        <img
+          src="./assets/img/left-arrow-next-svgrepo-com.svg"
+          alt="left arrow"
+        />
+      </button>
+
       <div class="carousel__track-container">
         <ul class="carousel__track">
           <li class="carousel__slide">
@@ -31,7 +37,16 @@
           </li>
         </ul>
       </div>
-      <button class="carousel__button"></button>
+
+      <button class="carousel__button carousel__button--right">
+        <img src="./assets/img/right-arrow-svgrepo-com.svg" alt="right arrow" />
+      </button>
+
+      <div class="carousel__nav">
+        <button class="carousel__indicator"></button>
+        <button class="carousel__indicator"></button>
+        <button class="carousel__indicator"></button>
+      </div>
     </div>
   </body>
 </html>
