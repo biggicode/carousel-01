@@ -29,3 +29,24 @@
   bottom: 0;
   width: 100%;
 }
+
+.carousel__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.carousel__button--left {
+  left: -45px;
+}
+
+.carousel__button--right {
+  right: -45px;
+}
+
+.carousel__button img {
+  width: 24px;
+}
