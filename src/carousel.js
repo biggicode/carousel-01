@@ -23,5 +23,16 @@ slides.forEach(setSlidePosition);
 //Click on left
 
 //Click on right
+rightArrow.addEventListener("click", (e) => {
+  const currentSlide = track.querySelector(".current-slide");
+  const nextSlide = currentSlide.nextElementSibling;
+  const amountToMove = nextSlide.style.left;
+  console.log(amountToMove);
+  //move to the next slide
+
+  track.style.transform = `translateX(-${amountToMove})`;
+  currentSlide.classList.remove("current-slide");
+  nextSlide.classList.add("current-slide");
+});
 
 //Nav indicator click

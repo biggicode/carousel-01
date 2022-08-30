@@ -21,6 +21,8 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  height: 100%;
+  transition: transform 250ms ease-in;
 }
 
 .carousel__slide {
