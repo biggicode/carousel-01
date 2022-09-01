@@ -43,3 +43,15 @@ rightArrow.addEventListener("click", (e) => {
 });
 
 //Nav indicator click
+
+dotsNav.addEventListener("click", (e) => {
+  const clickedDot = e.target.closest("button");
+  if (!clickedDot) return;
+
+  const currentSlide = track.querySelector(".current-slide");
+  const currentDot = dotsNav.querySelector(".current-slide");
+  const targetIndex = dots.findIndex((dot) => dot === clickedDot);
+  const targetSlide = slides[targetIndex];
+
+  moveToSlide(track, currentSlide, targetSlide);
+});
