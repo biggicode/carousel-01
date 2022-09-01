@@ -20,19 +20,26 @@ const setSlidePosition = (slide, index) => {
 
 slides.forEach(setSlidePosition);
 
+const moveToSlide = (track, currentSlide, targetSlide) => {
+  track.style.transform = `translateX(-${targetSlide.style.left})`;
+  currentSlide.classList.remove("current-slide");
+  targetSlide.classList.add("current-slide");
+};
+
 //Click on left
+leftArrow.addEventListener("click", (e) => {
+  const currentSlide = track.querySelector(".current-slide");
+  const prevSlide = currentSlide.previousElementSibling;
+
+  moveToSlide(track, currentSlide, prevSlide);
+});
 
 //Click on right
 rightArrow.addEventListener("click", (e) => {
   const currentSlide = track.querySelector(".current-slide");
   const nextSlide = currentSlide.nextElementSibling;
-  const amountToMove = nextSlide.style.left;
-  console.log(amountToMove);
-  //move to the next slide
 
-  track.style.transform = `translateX(-${amountToMove})`;
-  currentSlide.classList.remove("current-slide");
-  nextSlide.classList.add("current-slide");
+  moveToSlide(track, currentSlide, nextSlide);
 });
 
 //Nav indicator click
