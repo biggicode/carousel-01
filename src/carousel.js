@@ -54,4 +54,6 @@ dotsNav.addEventListener("click", (e) => {
   const targetSlide = slides[targetIndex];
 
   moveToSlide(track, currentSlide, targetSlide);
+  currentDot.classList.remove("current-slide");
+  clickedDot.classList.add("current-slide");
 });
