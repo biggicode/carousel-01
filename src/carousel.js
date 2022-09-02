@@ -26,12 +26,21 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
   targetSlide.classList.add("current-slide");
 };
 
+const updateDots = (currentDot, clickedDot) => {
+  currentDot.classList.remove("current-slide");
+  clickedDot.classList.add("current-slide");
+};
+
 //Click on left
 leftArrow.addEventListener("click", (e) => {
   const currentSlide = track.querySelector(".current-slide");
   const prevSlide = currentSlide.previousElementSibling;
 
+  const currentDot = dotsNav.querySelector(".current-slide");
+  const prevDot = currentDot.previousElementSibling;
+
   moveToSlide(track, currentSlide, prevSlide);
+  updateDots(currentDot, prevDot);
 });
 
 //Click on right
@@ -39,7 +48,11 @@ rightArrow.addEventListener("click", (e) => {
   const currentSlide = track.querySelector(".current-slide");
   const nextSlide = currentSlide.nextElementSibling;
 
+  const currentDot = dotsNav.querySelector(".current-slide");
+  const nextDot = currentDot.nextElementSibling;
+
   moveToSlide(track, currentSlide, nextSlide);
+  updateDots(currentDot, nextDot);
 });
 
 //Nav indicator click
@@ -54,6 +67,5 @@ dotsNav.addEventListener("click", (e) => {
   const targetSlide = slides[targetIndex];
 
   moveToSlide(track, currentSlide, targetSlide);
-  currentDot.classList.remove("current-slide");
-  clickedDot.classList.add("current-slide");
+  updateDots(currentDot, clickedDot);
 });
