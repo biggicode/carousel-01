@@ -31,6 +31,19 @@ const updateDots = (currentDot, clickedDot) => {
   clickedDot.classList.add("current-slide");
 };
 
+const toggleArrows = (targetIndex) => {
+  if (targetIndex === 0) {
+    leftArrow.classList.add("hidden");
+    rightArrow.classList.remove("hidden");
+  } else if (targetIndex === slides.length - 1) {
+    rightArrow.classList.add("hidden");
+    leftArrow.classList.remove("hidden");
+  } else {
+    leftArrow.classList.remove("hidden");
+    rightArrow.classList.remove("hidden");
+  }
+};
+
 //Click on left
 leftArrow.addEventListener("click", (e) => {
   const currentSlide = track.querySelector(".current-slide");
@@ -39,8 +52,11 @@ leftArrow.addEventListener("click", (e) => {
   const currentDot = dotsNav.querySelector(".current-slide");
   const prevDot = currentDot.previousElementSibling;
 
+  const nextIndex = slides.findIndex((slide) => slide === prevSlide);
+
   moveToSlide(track, currentSlide, prevSlide);
   updateDots(currentDot, prevDot);
+  toggleArrows(nextIndex);
 });
 
 //Click on right
@@ -51,8 +67,11 @@ rightArrow.addEventListener("click", (e) => {
   const currentDot = dotsNav.querySelector(".current-slide");
   const nextDot = currentDot.nextElementSibling;
 
+  const targetIndex = slides.findIndex((slide) => slide === nextSlide);
+
   moveToSlide(track, currentSlide, nextSlide);
   updateDots(currentDot, nextDot);
+  toggleArrows(targetIndex);
 });
 
 //Nav indicator click
@@ -68,4 +87,5 @@ dotsNav.addEventListener("click", (e) => {
 
   moveToSlide(track, currentSlide, targetSlide);
   updateDots(currentDot, clickedDot);
+  toggleArrows(targetIndex);
 });
